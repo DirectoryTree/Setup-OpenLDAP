@@ -1,0 +1,30 @@
+name: "Setup OpenLDAP"
+description: "Provides a test OpenLDAP server"
+
+inputs:
+    adminPassword:
+        description: "Set the password for the admin user"
+        required: true
+        default: "secret"
+
+    domain:
+        description: "Set the domain name"
+        required: true
+        default: "local.com"
+
+    prepopulate:
+        description: "Set the path to import data from"
+        required: false
+        default: ""
+
+runs:
+    using: "docker"
+    image: "Dockerfile"
+    args:
+        - ${{ inputs.adminPassword }}
+        - ${{ inputs.domain }}
+        - ${{ inputs.prepopulate }}
+
+branding:
+    icon: box
+    color: black
