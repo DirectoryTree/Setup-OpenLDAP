@@ -95,3 +95,5 @@ Check out your repository before using `prepopulate`, then provide the directory
 ```
 
 The directory is mounted at `/etc/ldap.dist/prepopulate` in the OpenLDAP container. The image imports LDIF files in alphabetical order during its first startup. Use distinguished names that match the configured domain.
+
+The entrypoint resolves the fixture path under `GITHUB_WORKSPACE` and starts a separate container through Docker. The resolved directory must exist on the Docker host as well; check the workspace path mapping if your LDIF files are not imported.
